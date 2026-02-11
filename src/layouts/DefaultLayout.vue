@@ -2,10 +2,11 @@
   <div :class="['layout-shell', `surface-${pageTone}`]">
     <header class="top-nav">
       <button type="button" class="logo-btn tap-feedback" aria-label="返回首页" @click="goHome">
-        🐒 悟空哆哆
+        <SvgIcon name="brand-monkey" size="lg" tone="mixed" :decorative="false" title="悟空哆哆" />
+        <span>悟空哆哆</span>
       </button>
       <button type="button" class="msg-btn tap-feedback" aria-label="消息中心" @click="toMessages">
-        🔔
+        <SvgIcon name="bell" size="lg" tone="blue" />
         <span v-if="unreadCount > 0" class="badge">{{ unreadCount }}</span>
       </button>
     </header>
@@ -26,7 +27,7 @@
         :class="['nav-item', { active: isActive(item.path) }]"
         @click="navigate(item.path)"
       >
-        <span>{{ item.icon }}</span>
+        <SvgIcon :name="item.icon" size="md" tone="mixed" />
         <small>{{ item.title }}</small>
       </button>
     </nav>
@@ -37,6 +38,7 @@
 import { computed, onMounted } from 'vue'
 import { RouterView, useRoute, useRouter } from 'vue-router'
 
+import SvgIcon from '@/components/icons/SvgIcon.vue'
 import { platformApi } from '@/services/adapters/platformApi'
 import { useMessageStore } from '@/stores/message.store'
 import type { NavItem } from '@/types/ui'
@@ -77,11 +79,11 @@ onMounted(async () => {
 })
 
 const navItems: NavItem[] = [
-  { title: '首页', path: '/', icon: '🏠' },
-  { title: '发现兼职', path: '/discover-jobs', icon: '🧭' },
-  { title: '找项目', path: '/find-project', icon: '🧑‍💻' },
-  { title: '找家教', path: '/find-tutor', icon: '📚' },
-  { title: '我的', path: '/profile', icon: '👤' },
+  { title: '首页', path: '/', icon: 'home' },
+  { title: '发现兼职', path: '/discover-jobs', icon: 'discover' },
+  { title: '找项目', path: '/find-project', icon: 'project' },
+  { title: '找家教', path: '/find-tutor', icon: 'tutor' },
+  { title: '我的', path: '/profile', icon: 'profile' },
 ]
 
 function isActive(path: string): boolean {
@@ -138,12 +140,20 @@ function goHome(): void {
   color: var(--text-main);
 }
 
+.logo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
 .msg-btn {
   position: relative;
-  font-size: 22px;
   width: 44px;
   height: 44px;
   border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .badge {
@@ -189,7 +199,7 @@ function goHome(): void {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
   color: var(--text-secondary);
   transition:
     color var(--motion-normal) var(--curve-standard),

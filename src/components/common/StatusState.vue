@@ -1,6 +1,8 @@
 <template>
   <section class="status-state" :class="[`state-${state}`]" role="status" aria-live="polite">
-    <div class="state-icon" :aria-hidden="true">{{ iconMap[state] }}</div>
+    <div class="state-icon" :aria-hidden="true">
+      <SvgIcon :name="iconMap[state]" size="xl" :tone="toneMap[state]" />
+    </div>
     <h3>{{ title }}</h3>
     <p v-if="description">{{ description }}</p>
     <button
@@ -15,6 +17,8 @@
 </template>
 
 <script setup lang="ts">
+import SvgIcon from '@/components/icons/SvgIcon.vue'
+import type { IconName, IconTone } from '@/components/icons/types'
 import type { PageState } from '@/types/ui'
 
 defineProps<{
@@ -28,12 +32,20 @@ defineEmits<{
   action: []
 }>()
 
-const iconMap: Record<PageState, string> = {
-  default: '✨',
-  loading: '⏳',
-  empty: '📭',
-  error: '⚠️',
-  success: '✅',
+const iconMap: Record<PageState, IconName> = {
+  default: 'status-default',
+  loading: 'status-loading',
+  empty: 'status-empty',
+  error: 'status-error',
+  success: 'status-success',
+}
+
+const toneMap: Record<PageState, IconTone> = {
+  default: 'mixed',
+  loading: 'warning',
+  empty: 'neutral',
+  error: 'error',
+  success: 'success',
 }
 </script>
 
@@ -56,7 +68,6 @@ const iconMap: Record<PageState, string> = {
   border-radius: var(--radius-pill);
   display: grid;
   place-items: center;
-  font-size: 26px;
   background: var(--brand-blue-100);
 }
 

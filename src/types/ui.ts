@@ -1,20 +1,22 @@
+import type { IconName } from '@/components/icons/types'
+
 export interface NavItem {
   title: string
   path: string
-  icon: string
+  icon: IconName
 }
 
 export interface ScenarioQuickEntry {
   title: string
   subtitle: string
   path: string
-  emoji: string
+  icon: IconName
 }
 
 export interface AdvantageItem {
   title: string
   description: string
-  icon: string
+  icon: IconName
 }
 
 export type ThemeMode = 'light' | 'dark' | 'system'

@@ -1,7 +1,9 @@
 <template>
   <section :class="['assistant-panel', `mode-${mode}`, `state-${state}`]">
     <div class="assistant-head">
-      <span class="avatar" aria-hidden="true">🤖</span>
+      <span class="avatar" aria-hidden="true">
+        <SvgIcon name="assistant" size="lg" tone="mixed" />
+      </span>
       <div>
         <h4>哆哆智能助手</h4>
         <p>{{ contextHint || '用自然语言描述需求，我会自动提取关键信息并回填表单。' }}</p>
@@ -32,6 +34,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 
+import SvgIcon from '@/components/icons/SvgIcon.vue'
 import type { ChatExtractResponse } from '@/types/dto'
 import type { PageState } from '@/types/ui'
 

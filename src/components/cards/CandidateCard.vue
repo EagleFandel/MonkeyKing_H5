@@ -6,11 +6,12 @@
     </div>
     <p class="major">{{ candidate.major }}</p>
     <p class="experience">{{ candidate.experience }}</p>
+    <div class="reason">推荐理由：技能标签与需求高度一致，近期履约稳定。</div>
     <div class="tags">
       <span v-for="tag in candidate.tags" :key="tag">{{ tag }}</span>
     </div>
     <div class="foot-row">
-      <span class="rating">★ {{ candidate.rating.toFixed(1) }}</span>
+      <span class="rating">评分 {{ candidate.rating.toFixed(1) }}</span>
       <strong>{{ candidate.price }}</strong>
     </div>
     <div class="actions">
@@ -103,6 +104,12 @@ h3 {
   margin: 8px 0;
   color: var(--text-secondary);
   font-size: 13px;
+}
+
+.reason {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--brand-blue-700);
 }
 
 .tags {
