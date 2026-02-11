@@ -1,0 +1,53 @@
+import type { MatchCandidate } from '@/types/domain'
+
+export const candidateFixtures: MatchCandidate[] = [
+  {
+    id: 'cand-project-1',
+    scene: 'project',
+    name: '林同学',
+    major: '软件工程',
+    tags: ['Vue3', 'Node.js', '协作型'],
+    experience: '完成 6 个小程序项目，2 个 AI Demo',
+    rating: 4.8,
+    matchScore: 93,
+    price: '¥80/小时',
+    highlights: ['电商小程序', '接口设计', '进度透明'],
+  },
+  {
+    id: 'cand-tutor-1',
+    scene: 'tutor',
+    name: '王同学',
+    major: '数学与应用数学',
+    tags: ['初中数学', '耐心细致'],
+    experience: '1.5 年初中数学家教经验',
+    rating: 4.9,
+    matchScore: 95,
+    price: '¥120/小时',
+    highlights: ['提分显著', '方法讲解'],
+  },
+  {
+    id: 'cand-sparring-1',
+    scene: 'sparring',
+    name: '赵同学',
+    major: '体育教育',
+    tags: ['网球专项', '比赛经验'],
+    experience: '市级比赛三等奖，2 年陪练经验',
+    rating: 4.7,
+    matchScore: 90,
+    price: '¥100/小时',
+    highlights: ['发球提升', '实战对抗'],
+  },
+  {
+    id: 'cand-job-1',
+    scene: 'job',
+    name: '海报设计兼职',
+    major: '校园创业团队',
+    tags: ['平面设计', 'PS', 'AI 绘图'],
+    experience: '每周固定需求，长期合作',
+    rating: 4.6,
+    matchScore: 92,
+    price: '¥40/小时',
+    highlights: ['远程协作', '可积累作品集'],
+  },
+]
+
