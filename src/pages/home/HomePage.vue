@@ -13,6 +13,9 @@
         <button class="btn-secondary tap-feedback" type="button" @click="toggleAssistant">
           马上描述需求
         </button>
+        <button class="btn-secondary tap-feedback" type="button" @click="goTo('/home')">
+          体验新首页
+        </button>
       </div>
     </article>
 
@@ -405,4 +408,3 @@ h3 {
   margin: 0 6px;
 }
 </style>
-

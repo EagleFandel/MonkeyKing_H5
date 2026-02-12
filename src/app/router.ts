@@ -5,6 +5,11 @@ import { useAuthStore } from '@/stores/auth.store'
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/home',
+    name: 'home-agent',
+    component: () => import('@/pages/home/HomeAgentPage.vue'),
+  },
+  {
     path: '/',
     component: DefaultLayout,
     children: [
