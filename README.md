@@ -53,3 +53,8 @@ npm run test:e2e
 - `docs/dev-plan.md`
 - `docs/test-cases.md`
 
+## Deployment Mode
+- Static demo deployment should use mock mode.
+- Use `VITE_API_MODE=mock` to enable MSW in both development and production.
+- `VITE_API_BASE_URL` defaults to `/api` and can be changed when a real backend is available.
+- To connect a real backend later, set `VITE_API_MODE=real` and configure `VITE_API_BASE_URL` explicitly.

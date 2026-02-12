@@ -5,16 +5,17 @@ import 'vant/lib/index.css'
 
 import App from '@/app/App.vue'
 import { router } from '@/app/router'
+import { runtime } from '@/config/runtime'
 import '@/style.css'
 
 async function bootstrap() {
-  if (import.meta.env.DEV) {
+  if (runtime.apiMode === 'mock') {
     const { worker } = await import('@/mocks/browser')
     await worker.start({
       serviceWorker: {
         url: '/mockServiceWorker.js',
       },
-      onUnhandledRequest: 'bypass',
+      onUnhandledRequest: 'warn',
     })
   }
 

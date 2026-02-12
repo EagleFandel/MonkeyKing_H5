@@ -21,7 +21,7 @@
       />
 
       <div class="page-actions">
-        <button class="btn-primary tap-feedback" type="button" @click="submit">提交认证</button>
+        <button class="btn-primary tap-feedback" type="button" :disabled="submitting" @click="submit">提交认证</button>
       </div>
     </article>
   </section>
@@ -47,8 +47,13 @@ const role = ref<UserRole>('student')
 const realName = ref('')
 const idNumber = ref('')
 const selfieToken = ref('')
+const submitting = ref(false)
 
 async function submit() {
+  if (submitting.value) {
+    return
+  }
+
   const payload = {
     role: role.value,
     realName: realName.value,
@@ -61,6 +66,7 @@ async function submit() {
     return
   }
 
+  submitting.value = true
   try {
     const result = await platformApi.verify(payload)
     if (!result.verified) {
@@ -80,6 +86,8 @@ async function submit() {
     void router.push('/profile')
   } catch (error) {
     showFailToast((error as Error).message)
+  } finally {
+    submitting.value = false
   }
 }
 </script>
@@ -102,5 +110,9 @@ select {
   border: 1px solid #dde5f1;
   padding: 0 10px;
 }
+.btn-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+  box-shadow: none;
+}
 </style>
-
